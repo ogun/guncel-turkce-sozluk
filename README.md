@@ -1,5 +1,5 @@
 # Projenin Amacı
-Türk Dil Kurumu'nun yayınladığı Güncel Türkçe Sözlük'ü yazılımcıların kullanabileceği bir hale getirmek. Şu anda proje içerisinde 92.403 adet kelime en güncel haliyle bulunmakta.
+Türk Dil Kurumu'nun yayınladığı Güncel Türkçe Sözlük'ü yazılımcıların kullanabileceği bir hale getirmek. Şu anda proje içerisinde 92.403 adet madde en güncel haliyle bulunmaktadır.
 
 Sözlüğü üç farklı türde indirebilirsiniz.
 1. JSON dosyası olarak: [gts.json.tar.gz](sozluk/gts.json.tar.gz)
@@ -24,7 +24,7 @@ Sözlüğü üç farklı türde indirebilirsiniz.
 3. mı / mi, mu / mü (#31114)
 
 # TDK 2007 Sözlüğü
-TDK'nın 2007 yılında yayınladığı sözlüğe ise old klasöründeki [TDK-2007.rar](old/TDK-2007.rar) dosyasından ulaşabilirsiniz.
+TDK'nın 2007 yılında yayınladığı sözlüğe ise old klasöründeki [TDK-2007.rar](old/TDK-2007.rar) dosyasından ulaşabilirsiniz. Eski sözlük içerisinde 73.707 adet madde bulundurmaktadır.
 
 # Güncel Türkçe Sözlük
 Türk Dil Kurumunun 1945'ten beri yayımlanan Türkçe Sözlük'ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenmiş olarak genel ağdan sunulan sürümüdür. Türkçe Sözlük dilimizde yaşanan gelişmelere bağlı olarak sürekli güncellenmektedir.
