@@ -10,11 +10,12 @@ Sözlüğü üç farklı türde indirebilirsiniz.
 İndirdiğiniz dosya GZIP ile sıkıştırılmıştır. Sıkıştırmayı açtıktan sonra içeriğini herhangi bir text editörle görüntüleyebilirsiniz.
 
 ## MongoDB
-İndirdiğini dosyayı aşağıdaki komutun yardımıyla kendi MongoDB sunucunuza aktarabilirsiniz.
+İndirdiğiniz dosyayı aşağıdaki komutun yardımıyla kendi MongoDB sunucunuza aktarabilirsiniz.
+
 `mongorestore --gzip --archive=gts.mongo4.gzip.archive`
 
 ## SQLite
-İndirdiğiniz dosyayı herhangi bir SQLite görüntüleyici ile görüntüleyebilirsiniz ve kullanbilirsiniz. Veritabanının şeması aşağıdaki gibidir.
+İndirdiğiniz dosyayı herhangi bir SQLite görüntüleyici ile görüntüleyebilirsiniz ve kullanabilirsiniz. Veritabanının şeması aşağıdaki gibidir.
 ![alt text](static/schema.png "SQLite Schema")
 
 ## Bilinen Problemler
