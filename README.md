@@ -1,5 +1,5 @@
 # Projenin Amacı
-Türk Dil Kurumu'nun yayınladığı Güncel Türkçe Sözlük'ü yazılımcıların kullanabileceği bir hale getirmek. Şu anda proje içerisinde 92.403 adet madde en güncel haliyle bulunmaktadır.
+Türk Dil Kurumu'nun yayınladığı Güncel Türkçe Sözlük'ü yazılımcıların kullanabileceği bir hale getirmek. Şu anda proje içerisinde 92.406 adet madde en güncel haliyle bulunmaktadır.
 
 Sözlüğü üç farklı türde indirebilirsiniz.
 1. JSON dosyası olarak: [gts.json.tar.gz](sozluk/gts.json.tar.gz)
@@ -17,12 +17,6 @@ Sözlüğü üç farklı türde indirebilirsiniz.
 ## SQLite
 İndirdiğiniz dosyayı herhangi bir SQLite görüntüleyici ile görüntüleyebilirsiniz ve kullanabilirsiniz. Veritabanının şeması aşağıdaki gibidir.
 ![alt text](static/schema.png "SQLite Schema")
-
-## Bilinen Problemler
-Şu anda sözlük güncel halindeki 3 adet maddeyi içermiyor. Bu maddeleri şu anki API üzerinden ulaşılamadığı için ekleyemedim. Eksik maddeler ve id'leri:
-1. a / e (#6171)
-2. da / de (#15889)
-3. mı / mi, mu / mü (#31114)
 
 # TDK 2007 Sözlüğü
 TDK'nın 2007 yılında yayınladığı sözlüğe ise old klasöründeki [TDK-2007.rar](old/TDK-2007.rar) dosyasından ulaşabilirsiniz. Eski sözlük içerisinde 73.707 adet madde bulundurmaktadır.
