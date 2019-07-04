@@ -1,6 +1,4 @@
 """ Güncel Türkçe Sözlük verilerini kaydeder """
-import json
-
 import consts
 
 from pymongo import MongoClient, ReplaceOne
@@ -18,24 +16,23 @@ def get_api_result(word):
         "User-Agent": "APIs-Google (+https://developers.google.com/webmasters/APIs-Google.html)"
     }
 
-    api_url = f"http://www.sozluk.gov.tr/gts?ara={word}"
-    result = requests.get(api_url, headers=headers)
+    api_url = "http://www.sozluk.gov.tr/gts"
+    params = {"ara": word}
+    result = requests.get(api_url, params=params, headers=headers)
 
     if result.status_code != 200:
         print("API error. Status Code: {result.status_code}. Word: {word}")
         return None
 
-    return result.text
+    return result.json()
 
 
 def get_results():
     """ Elimizdeki kelime listesi uzerinden kelimeleri getirir """
     for word in consts.WORDS:
-        response = get_api_result(word)
-        if not response:
+        maddeler = get_api_result(word)
+        if "error" in maddeler:
             continue
-
-        maddeler = json.loads(response)
 
         for madde in maddeler:
             if not isinstance(madde, dict):
