@@ -2,12 +2,12 @@
 from pymongo import MongoClient
 import sqlite3
 
-CLIENT = MongoClient("localhost", 27017)
+CLIENT = MongoClient()
 MONGO_TOPICS = CLIENT.gts.maddeler
 
 
 def create_connection(db_file):
-    """ sqlite connectionu olusturur """
+    """sqlite connectionu olusturur"""
     try:
         conn = sqlite3.connect(db_file)
         return conn
@@ -18,7 +18,7 @@ def create_connection(db_file):
 
 
 def insert_anlam(conn, anlam):
-    """ anlami veritabanina ekler """
+    """anlami veritabanina ekler"""
     sql = """INSERT INTO anlam(anlam_id,madde_id,anlam_sira,fiil,tipkes,anlam,gos)
            VALUES (?,?,?,?,?,?,?)"""
     arr = (
@@ -43,7 +43,7 @@ def insert_anlam(conn, anlam):
 
 
 def insert_anlamlar(conn, madde):
-    """ anlamlari veritabanina ekler """
+    """anlamlari veritabanina ekler"""
     if "anlamlarListe" not in madde:
         return None
 
@@ -53,8 +53,8 @@ def insert_anlamlar(conn, madde):
 
 
 def insert_anlam_ozellik(conn, anlam_id, ozellik_id):
-    """ anlam_ozellik ilisiklisini veritanina ekler """
-    sql = """INSERT INTO anlam_ozellik(anlam_id, ozellik_id) 
+    """anlam_ozellik ilisiklisini veritanina ekler"""
+    sql = """INSERT INTO anlam_ozellik(anlam_id, ozellik_id)
            VALUES (?,?)"""
     arr = (anlam_id, ozellik_id)
     cur = conn.cursor()
@@ -62,8 +62,8 @@ def insert_anlam_ozellik(conn, anlam_id, ozellik_id):
 
 
 def insert_atasozu(conn, atasozu):
-    """ atasozunu veritabanina ekler """
-    sql = """INSERT OR REPLACE INTO atasozu(madde_id,madde) 
+    """atasozunu veritabanina ekler"""
+    sql = """INSERT OR REPLACE INTO atasozu(madde_id,madde)
            VALUES (?,?)"""
     arr = (atasozu["madde_id"], atasozu["madde"])
     cur = conn.cursor()
@@ -71,7 +71,7 @@ def insert_atasozu(conn, atasozu):
 
 
 def insert_atasozleri(conn, madde):
-    """ atasozlerini veritabanina ekler """
+    """atasozlerini veritabanina ekler"""
     if "atasozu" not in madde:
         return None
 
@@ -82,7 +82,7 @@ def insert_atasozleri(conn, madde):
 
 
 def insert_madde(conn, madde):
-    """ maddeyi veritabanina ekler """
+    """maddeyi veritabanina ekler"""
     sql = """INSERT INTO madde(madde_id,kac,kelime_no,cesit,anlam_gor,on_taki,madde,cesit_say,anlam_say,taki,cogul_mu,ozel_mi,lisan_kodu,lisan,telaffuz,birlesikler,font,madde_duz,gosterim_tarihi)
            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
     arr = (
@@ -112,8 +112,8 @@ def insert_madde(conn, madde):
 
 
 def insert_madde_atasozu(conn, madde_id, atasozu_madde_id):
-    """ madde_atasozu iliskisini kurar """
-    sql = """INSERT INTO madde_atasozu(madde_id, atasozu_madde_id) 
+    """madde_atasozu iliskisini kurar"""
+    sql = """INSERT INTO madde_atasozu(madde_id, atasozu_madde_id)
            VALUES (?,?)"""
     arr = (madde_id, atasozu_madde_id)
     cur = conn.cursor()
@@ -121,7 +121,7 @@ def insert_madde_atasozu(conn, madde_id, atasozu_madde_id):
 
 
 def insert_ornek(conn, ornek):
-    """ ornegi veritabanina ekler """
+    """ornegi veritabanina ekler"""
     if "yazar" in ornek:
         insert_yazarlar(conn, ornek["yazar"])
 
@@ -145,7 +145,7 @@ def insert_ornek(conn, ornek):
 
 
 def insert_ornekler(conn, ornekler):
-    """ ornekleri veritabanina ekler """
+    """ornekleri veritabanina ekler"""
     if not ornekler:
         return None
 
@@ -154,8 +154,8 @@ def insert_ornekler(conn, ornekler):
 
 
 def insert_ozellik(conn, ozellik):
-    """ ozelligi veritabanina ekler """
-    sql = """INSERT OR REPLACE INTO ozellik(ozellik_id,tur,tam_adi,kisa_adi,ekno) 
+    """ozelligi veritabanina ekler"""
+    sql = """INSERT OR REPLACE INTO ozellik(ozellik_id,tur,tam_adi,kisa_adi,ekno)
            VALUES (?,?,?,?,?)"""
     arr = (
         ozellik["ozellik_id"],
@@ -169,7 +169,7 @@ def insert_ozellik(conn, ozellik):
 
 
 def insert_ozellikler(conn, anlam_id, ozellikler):
-    """ ozellikleri veritabanina ekler """
+    """ozellikleri veritabanina ekler"""
     if not ozellikler:
         return None
 
@@ -179,8 +179,8 @@ def insert_ozellikler(conn, anlam_id, ozellikler):
 
 
 def insert_yazar(conn, yazar):
-    """ yazari veritabanina ekler """
-    sql = """INSERT OR REPLACE INTO yazar(yazar_id,tam_adi,kisa_adi,ekno) 
+    """yazari veritabanina ekler"""
+    sql = """INSERT OR REPLACE INTO yazar(yazar_id,tam_adi,kisa_adi,ekno)
            VALUES (?,?,?,?)"""
     arr = (yazar["yazar_id"], yazar["tam_adi"], yazar["kisa_adi"], yazar["ekno"])
     cur = conn.cursor()
@@ -188,7 +188,7 @@ def insert_yazar(conn, yazar):
 
 
 def insert_yazarlar(conn, yazarlar):
-    """ yazarlari veritabanina ekler """
+    """yazarlari veritabanina ekler"""
     if not yazarlar:
         return None
 
@@ -197,7 +197,7 @@ def insert_yazarlar(conn, yazarlar):
 
 
 def execute():
-    """ ana method """
+    """ana method"""
     for madde in MONGO_TOPICS.find():
         conn = create_connection("guncel-turkce-sozluk.db")
 
