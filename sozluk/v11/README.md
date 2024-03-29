@@ -2,9 +2,9 @@
 Proje içerisinde 92.406 adet madde bulunmaktadır.
 
 Sözlüğü üç farklı türde indirebilirsiniz.
-1. JSON dosyası olarak: [gts.json.tar.gz](v11.gts.json.tar.gz)
-2. MongoDB archive dosyası olarak: [gts.mongo4.gzip.archive](v11.gts.mongo4.gzip.archive)
-3. SQLite veritabanı olarak: [gts.sqlite3.db](v11.gts.sqlite3.db)
+1. JSON dosyası olarak: [v11.gts.json.tar.gz](v11.gts.json.tar.gz)
+2. MongoDB archive dosyası olarak: [v11.gts.mongo4.gzip.archive](v11.gts.mongo4.gzip.archive)
+3. SQLite veritabanı olarak: [v11.gts.sqlite3.db](v11.gts.sqlite3.db)
 
 ## JSON
 İndirdiğiniz dosya GZIP ile sıkıştırılmıştır. Sıkıştırmayı açtıktan sonra içeriğini herhangi bir text editörle görüntüleyebilirsiniz.

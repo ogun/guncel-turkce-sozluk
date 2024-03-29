@@ -2,7 +2,7 @@
 Proje içerisinde 73.707 adet madde bulunmaktadır.
 
 Sözlüğü iki farklı türde indirebilirsiniz.
-1. RAR dosyası olarak: [TDK-2007](TDK-2007.rar)
+1. RAR dosyası olarak: [TDK-2007.rar](TDK-2007.rar)
 2. SQLite veritabanı olarak: [backup-2007.sqlite3.db](backup-2007.sqlite3.db)
 
 ## RAR
