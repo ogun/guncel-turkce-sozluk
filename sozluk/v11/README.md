@@ -16,7 +16,7 @@ Sözlüğü üç farklı türde indirebilirsiniz.
 
 ## SQLite
 İndirdiğiniz dosyayı herhangi bir SQLite görüntüleyici ile görüntüleyebilirsiniz ve kullanabilirsiniz. Veritabanının şeması aşağıdaki gibidir.
-![alt text](../../static/v11.schema.png "SQLite Schema")
+![alt text](v11.schema.png "SQLite Schema")
 
 # TDK 2007 Sözlüğü
 TDK'nın 2007 yılında yayınladığı sözlüğe ise old klasöründeki [TDK-2007.rar](../../old/TDK-2007.rar) dosyasından ulaşabilirsiniz. Eski sözlük içerisinde 73.707 adet madde bulundurmaktadır.
