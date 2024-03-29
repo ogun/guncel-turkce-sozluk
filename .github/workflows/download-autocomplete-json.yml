@@ -1,0 +1,24 @@
+name: Download and push autocomplete.json
+on:
+  schedule:
+    - cron: "0 0 * * 5"
+permissions:
+  contents: write
+jobs:
+  download-autocomplete-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download autocomplete.json
+        run: curl -o sozluk/v12/src/v12.autocomplete.json https://sozluk.gov.tr/autocomplete.json
+      - name: Check if there are any changes
+        id: verify_diff
+        run: |
+          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
+      - name: Commit autocomplete.json
+        if: steps.verify_diff.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'github-actions@users.noreply.github.com'
+          git commit -am "Automated download"
+          git push
