@@ -1,4 +1,4 @@
-# Türk Dil Kurumu 11. Baskı
+# Güncel Türkçe Sözlük, 11. Baskı
 Proje içerisinde 92.406 adet madde bulunmaktadır.
 
 Sözlüğü üç farklı türde indirebilirsiniz.

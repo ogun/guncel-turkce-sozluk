@@ -1,6 +1,0 @@
-certifi
-chardet
-idna
-pymongo
-requests
-urllib3
