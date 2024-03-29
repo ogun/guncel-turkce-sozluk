@@ -19,7 +19,7 @@ Sözlüğü üç farklı türde indirebilirsiniz.
 ![alt text](v11.schema.png "SQLite Schema")
 
 # TDK 2007 Sözlüğü
-TDK'nın 2007 yılında yayınladığı sözlüğe ise old klasöründeki [TDK-2007.rar](../../old/TDK-2007.rar) dosyasından ulaşabilirsiniz. Eski sözlük içerisinde 73.707 adet madde bulundurmaktadır.
+TDK'nın 2007 yılında yayınladığı sözlüğe [sozlük/backup-2007 klasörü](../backup-2007) altındaki dosyalardan ulaşabilirsiniz. Eski sözlük içerisinde 73.707 adet madde bulundurmaktadır.
 
 # Güncel Türkçe Sözlük
 Türk Dil Kurumunun 1945'ten beri yayımlanan Türkçe Sözlük'ünün 2011 yılında yapılan 11. baskısının gözden geçirilip güncellenmiş olarak genel ağdan sunulan sürümüdür. Türkçe Sözlük dilimizde yaşanan gelişmelere bağlı olarak sürekli güncellenmektedir.
