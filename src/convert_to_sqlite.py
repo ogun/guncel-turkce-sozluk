@@ -1,4 +1,5 @@
 """ MongoDB icerisindeki kayitlari SQLite veritabanina aktarir """
+
 from pymongo import MongoClient
 import sqlite3
 
@@ -63,9 +64,9 @@ def insert_anlam_ozellik(conn, anlam_id, ozellik_id):
 
 def insert_atasozu(conn, atasozu):
     """atasozunu veritabanina ekler"""
-    sql = """INSERT OR REPLACE INTO atasozu(madde_id,madde)
-           VALUES (?,?)"""
-    arr = (atasozu["madde_id"], atasozu["madde"])
+    sql = """INSERT OR REPLACE INTO atasozu(madde_id,madde,on_taki)
+           VALUES (?,?,?)"""
+    arr = (atasozu["madde_id"], atasozu["madde"], atasozu.get("on_taki"))
     cur = conn.cursor()
     cur.execute(sql, arr)
 
@@ -83,8 +84,8 @@ def insert_atasozleri(conn, madde):
 
 def insert_madde(conn, madde):
     """maddeyi veritabanina ekler"""
-    sql = """INSERT INTO madde(madde_id,kac,kelime_no,cesit,anlam_gor,on_taki,madde,cesit_say,anlam_say,taki,cogul_mu,ozel_mi,lisan_kodu,lisan,telaffuz,birlesikler,font,madde_duz,gosterim_tarihi)
-           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+    sql = """INSERT INTO madde(madde_id,kac,kelime_no,cesit,anlam_gor,on_taki,madde,cesit_say,anlam_say,taki,cogul_mu,ozel_mi,lisan_kodu,lisan,telaffuz,birlesikler,font,madde_duz,gosterim_tarihi,egik_mi)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
     arr = (
         madde.get("madde_id"),
         madde.get("kac"),
@@ -105,6 +106,7 @@ def insert_madde(conn, madde):
         madde.get("font"),
         madde.get("madde_duz"),
         madde.get("gosterim_tarihi"),
+        madde.get("egik_mi", 0),
     )
     cur = conn.cursor()
     cur.execute(sql, arr)
@@ -125,8 +127,8 @@ def insert_ornek(conn, ornek):
     if "yazar" in ornek:
         insert_yazarlar(conn, ornek["yazar"])
 
-    sql = """INSERT INTO ornek(ornek_id,anlam_id,ornek_sira,ornek,kac,yazar_id)
-           VALUES (?,?,?,?,?,?)"""
+    sql = """INSERT INTO ornek(ornek_id,anlam_id,ornek_sira,ornek,kac,yazar_id,yazar_vd)
+           VALUES (?,?,?,?,?,?,?)"""
 
     yazar_id = None
     if ornek["yazar_id"] and ornek["yazar_id"] != "0":
@@ -139,6 +141,7 @@ def insert_ornek(conn, ornek):
         ornek["ornek"],
         ornek["kac"],
         yazar_id,
+        ornek.get("yazar_vd"),
     )
     cur = conn.cursor()
     cur.execute(sql, arr)

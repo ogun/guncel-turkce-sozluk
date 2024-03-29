@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS "ornek" (
 	"ornek"	TEXT,
 	"kac"	INTEGER NOT NULL,
 	"yazar_id"	INTEGER,
+	"yazar_vd"	TEXT,
 	PRIMARY KEY("ornek_id"),
 	FOREIGN KEY("anlam_id") REFERENCES "anlam"("anlam_id"),
 	FOREIGN KEY("yazar_id") REFERENCES "yazar"("yazar_id")
@@ -30,6 +31,7 @@ CREATE TABLE IF NOT EXISTS "anlam_ozellik" (
 CREATE TABLE IF NOT EXISTS "atasozu" (
 	"madde_id"	INTEGER NOT NULL,
 	"madde"	TEXT NOT NULL,
+	"on_taki" TEXT,
 	PRIMARY KEY("madde_id"),
 	FOREIGN KEY("madde_id") REFERENCES "madde"("madde_id")
 );
@@ -53,6 +55,7 @@ CREATE TABLE IF NOT EXISTS "madde" (
 	"font"	TEXT,
 	"madde_duz"	TEXT NOT NULL,
 	"gosterim_tarihi"	TEXT,
+	"egik_mi"	INTEGER NOT NULL,
 	PRIMARY KEY("madde_id")
 );
 CREATE TABLE IF NOT EXISTS "ozellik" (
