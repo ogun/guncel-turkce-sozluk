@@ -12,7 +12,7 @@ Sözlüğü üç farklı türde indirebilirsiniz.
 ## MongoDB
 İndirdiğiniz dosyayı aşağıdaki komutun yardımıyla kendi MongoDB sunucunuza aktarabilirsiniz.
 
-`mongorestore --gzip --archive=gts.mongo7.gzip.archive`
+`mongorestore --gzip --archive=v12.gts.mongo7.gzip.archive`
 
 ## SQLite
 İndirdiğiniz dosyayı herhangi bir SQLite görüntüleyici ile görüntüleyebilirsiniz ve kullanabilirsiniz. Veritabanının şeması aşağıdaki gibidir.
