@@ -1,4 +1,4 @@
-# Güncel Türkçe Sözlük, 2007 yılı baskısı
+# Güncel Türkçe Sözlük, 2007 Baskısı
 Proje içerisinde 73.707 adet madde bulunmaktadır.
 
 Sözlüğü iki farklı türde indirebilirsiniz.

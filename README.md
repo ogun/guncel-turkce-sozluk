@@ -18,13 +18,16 @@ Sözlüğü üç farklı türde indirebilirsiniz.
 İndirdiğiniz dosyayı herhangi bir SQLite görüntüleyici ile görüntüleyebilirsiniz ve kullanabilirsiniz. Veritabanının şeması aşağıdaki gibidir.
 ![alt text](sozluk/v12/v12.schema.png "SQLite Schema")
 
-# Güncel Türkçe Sözlük, 11. Baskı
-TDK'nın 2023 yılı öncesinde yayınladığı Güncel Türkçe Sözlük'ün 11. baskısına [sozlük/v11 klasörü](sozluk/v11) altındaki dosyalardan ulaşabilirsiniz. On birinci baskı içerisinde 92.406 adet madde bulundurmaktadır.
-
-# TDK 2007 Sözlüğü
-TDK'nın 2007 yılında yayınladığı sözlüğe [sozlük/backup-2007 klasörü](sozluk/backup-2007) altındaki dosyalardan ulaşabilirsiniz. Eski sözlük içerisinde 73.707 adet madde bulundurmaktadır.
-
 # Güncel Türkçe Sözlük
 Türk Dil Kurumunun 1945'ten beri yayımlanan Türkçe Sözlük'ünün 2023 yılında yapılan 12. baskısının gözden geçirilip güncellenmiş olarak genel ağdan sunulan sürümüdür. Türkçe Sözlük dilimizde yaşanan gelişmelere bağlı olarak sürekli güncellenmektedir.
 
 http://www.sozluk.gov.tr/
+
+# Eski Sürümler
+TDK tarafından sunulan ve internette bulunun eski sözlüklere aşağıdaki linklerden ulaşabilirsiniz.
+
+## Güncel Türkçe Sözlük, 11. Baskı
+TDK'nın 2023 yılı öncesinde yayınladığı Güncel Türkçe Sözlük'ün 11. baskısına [sozlük/v11 klasörü](sozluk/v11) altındaki dosyalardan ulaşabilirsiniz. On birinci baskı içerisinde 92.406 adet madde bulundurmaktadır.
+
+## Güncel Türkçe Sözlük, 2007 Baskısı
+TDK'nın 2007 yılında yayınladığı sözlüğe [sozlük/backup-2007 klasörü](sozluk/backup-2007) altındaki dosyalardan ulaşabilirsiniz. Eski sözlük içerisinde 73.707 adet madde bulundurmaktadır.
