@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download autocomplete.json
-        run: curl -o sozluk/v12/src/v12.autocomplete.json https://sozluk.gov.tr/autocomplete.json
+        run: curl -o sozluk/v12/src/v12.autocomplete.json --ciphers "ECDHE-RSA-AES256-GCM-SHA384" https://sozluk.gov.tr/autocomplete.json
       - name: Check if there are any changes
         id: verify_diff
         run: |
