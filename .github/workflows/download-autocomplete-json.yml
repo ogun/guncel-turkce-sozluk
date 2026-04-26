@@ -13,8 +13,8 @@ jobs:
       - name: Download autocomplete.json
         run: |
           docker run --rm --user $(id -u):$(id -g) -v ${{ github.workspace }}:/workspace \
-            lwthiker/curl-impersonate:latest \
-            curl_chrome116 "https://sozluk.gov.tr/autocomplete.json" -o /workspace/sozluk/v12/src/v12.autocomplete.json
+            lwthiker/curl-impersonate:0.6-chrome \
+            curl-impersonate-chrome "https://sozluk.gov.tr/autocomplete.json" -o /workspace/sozluk/v12/src/v12.autocomplete.json
       - name: Check if there are any changes
         id: verify_diff
         run: |
