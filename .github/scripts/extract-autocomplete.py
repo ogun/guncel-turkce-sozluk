@@ -10,34 +10,52 @@ import json
 import sys
 
 
-def extract_json_var(content, var_name):
-    marker = f"const {var_name}=JSON.parse("
-    start = content.find(marker)
-    if start < 0:
-        return None
+def extract_all_madde_arrays(content):
+    """Finds all JSON.parse(string_literal) in the JS bundle, parses them, 
+    and returns combined data for arrays that contain objects with a 'madde' key.
+    """
+    marker = "JSON.parse("
+    idx = 0
+    all_data = []
     
-    quote = content[start + len(marker)]
-    json_start = start + len(marker) + 1
-    
-    pos = json_start
-    while pos < len(content):
-        ch = content[pos]
-        if ch == "\\":
-            pos += 2
-            continue
-        if ch == quote:
+    while True:
+        idx = content.find(marker, idx)
+        if idx == -1:
             break
-        pos += 1
+            
+        quote = content[idx + len(marker)]
+        if quote in ("'", "`", '"'):
+            start = idx + len(marker) + 1
+            pos = start
+            while pos < len(content):
+                ch = content[pos]
+                if ch == "\\":
+                    pos += 2
+                    continue
+                if ch == quote:
+                    break
+                pos += 1
+                
+            raw_str = content[start:pos]
+            if quote == "'":
+                raw_str = raw_str.replace("\\'", "'")
+            elif quote == "`":
+                raw_str = raw_str.replace("\\`", "`").replace("\\${", "${")
+            elif quote == '"':
+                raw_str = raw_str.replace('\\"', '"')
+            
+            try:
+                parsed_data = json.loads(raw_str)
+                # Check if it's a list of dicts with 'madde'
+                if isinstance(parsed_data, list) and len(parsed_data) > 0 and isinstance(parsed_data[0], dict) and "madde" in parsed_data[0]:
+                    all_data.extend(parsed_data)
+                    print(f"Found and extracted {len(parsed_data)} entries from a JSON.parse call.")
+            except json.JSONDecodeError:
+                pass
+                
+        idx += len(marker)
         
-    raw_str = content[json_start:pos]
-    if quote == "'":
-        raw_str = raw_str.replace("\\'", "'")
-    elif quote == "`":
-        raw_str = raw_str.replace("\\`", "`").replace("\\${", "${")
-    elif quote == '"':
-        raw_str = raw_str.replace('\\"', '"')
-        
-    return json.loads(raw_str)
+    return all_data
 
 
 # Turkish sorting map
@@ -64,15 +82,12 @@ def main(js_path, output_path):
     with open(js_path, encoding="utf-8") as f:
         content = f.read()
 
-    eA_data = extract_json_var(content, "eA") or []
-    SA_data = extract_json_var(content, "SA") or []
+    all_data = extract_all_madde_arrays(content)
     
-    if not eA_data and not SA_data:
-        print("::error::Could not find eA or SA variables in JS bundle", file=sys.stderr)
+    if not all_data:
+        print("::error::Could not find any autocomplete JSON arrays in the JS bundle", file=sys.stderr)
         sys.exit(1)
 
-    all_data = eA_data + SA_data
-    
     # Deduplicate by madde
     unique_dict = {}
     for item in all_data:
@@ -84,7 +99,6 @@ def main(js_path, output_path):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(unique_list, f, ensure_ascii=False)
 
-    print(f"Extracted {len(eA_data)} from eA, {len(SA_data)} from SA.")
     print(f"Total unique entries saved: {len(unique_list)}")
 
 
