@@ -41,6 +41,7 @@ def extract_autocomplete(js_path, output_path):
     json_str = json_str.replace("\\'", "'")
 
     data = json.loads(json_str)
+    data.sort(key=lambda entry: entry.get("madde", ""))
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False)
