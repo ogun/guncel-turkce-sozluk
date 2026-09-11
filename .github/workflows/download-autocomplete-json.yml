@@ -10,11 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download autocomplete.json
+      - name: Find JS bundle URL
+        id: find_js
         run: |
           docker run --rm --user $(id -u):$(id -g) -v ${{ github.workspace }}:/workspace \
             lwthiker/curl-impersonate:0.6-chrome \
-            curl-impersonate-chrome "https://sozluk.gov.tr/autocomplete.json" -o /workspace/sozluk/v12/src/v12.autocomplete.json
+            curl-impersonate-chrome "https://sozluk.gov.tr/" -o /workspace/index.html
+          JS_PATH=$(grep -oP '/assets/index-[A-Za-z0-9_-]+\.js' index.html | head -1)
+          if [ -z "$JS_PATH" ]; then
+            echo "::error::Could not find JS bundle URL in the page"
+            exit 1
+          fi
+          echo "js_url=https://sozluk.gov.tr${JS_PATH}" >> $GITHUB_OUTPUT
+          rm index.html
+      - name: Download JS bundle and extract autocomplete JSON
+        run: |
+          docker run --rm --user $(id -u):$(id -g) -v ${{ github.workspace }}:/workspace \
+            lwthiker/curl-impersonate:0.6-chrome \
+            curl-impersonate-chrome "${{ steps.find_js.outputs.js_url }}" -o /workspace/bundle.js
+          python3 .github/scripts/extract-autocomplete.py bundle.js sozluk/v12/src/v12.autocomplete.json
+          rm bundle.js
       - name: Check if there are any changes
         id: verify_diff
         run: |
